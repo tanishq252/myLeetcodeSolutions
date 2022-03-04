@@ -14,3 +14,4 @@ public:
         return max;
     }
 };
+// this above algorithm is kadanes algorithm
