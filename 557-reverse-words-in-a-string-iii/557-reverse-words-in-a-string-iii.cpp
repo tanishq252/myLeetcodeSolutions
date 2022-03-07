@@ -16,7 +16,6 @@ public:
             subStr+=s[i];
             if(i == n-1){
                 v.push_back(subStr);
-
             }
         }
         reverse(v.begin(), v.end());
