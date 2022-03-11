@@ -5,11 +5,17 @@ public:
         int j;
         vector<int> v;
         if(k%n == 0){return;}
-        else{j = k%n;}
-        for(int i= 0;i<j;i++){
-            v.push_back(nums[i+n-j]);
+        else{k = k%n;}
+        // for(int i= 0;i<j;i++){
+        //     v.push_back(nums[i+n-j]);
+        // }
+        // for(int i= 0;i<n-j;i++){
+        //     v.push_back(nums[i]);
+        // }
+        for(int i=n-k;i<n;i++){
+            v.push_back(nums[i]);
         }
-        for(int i= 0;i<n-j;i++){
+        for(int i=0;i<n-k;i++){
             v.push_back(nums[i]);
         }
         for(int i= 0;i<n;i++){
