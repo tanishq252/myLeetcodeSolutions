@@ -13,17 +13,11 @@ public:
             }
             else{
                 char top = st.top();
-                if(st.empty()){return false;}
-                else {
-                    if((s[i] == ')'&&top == '(')||(s[i] == ']'&&top == '[')||(s[i] == '}'&&top == '{')){
-                        st.pop();
-                        }
-                    else if(top == '}'||top == ']'||top == ')'){
-                        return false;
-                    }
-                    else{
-                        return false;
-                    }
+                if((s[i] == ')'&&top == '(')||(s[i] == ']'&&top == '[')||(s[i] == '}'&&top == '{')){
+                    st.pop();
+                }
+                else{
+                    return false;
                 }
             }
         }
