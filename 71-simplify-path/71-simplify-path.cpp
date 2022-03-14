@@ -24,16 +24,12 @@ public:
                 t+=path[i];
             }
         }
-        cout<<t;
-        
         if(v.size() == 0){return "/";}
-        
         for(int i=0;i<v.size()-1;i++){
             s+=v[i];
             s+="/";
         }
         s+=v[v.size()-1];
-        
         return s;
     }
 };
