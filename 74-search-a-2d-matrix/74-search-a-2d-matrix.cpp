@@ -10,7 +10,6 @@ public:
         if(row==-1){return false;}
         int i=0;
         int j=matrix[0].size()-1;
-        // if(i==j){return true;}
         while(i<=j){
             if(matrix[row][i] == target || matrix[row][j] == target){return true;}
             else if(matrix[row][i] < target){i++;}
