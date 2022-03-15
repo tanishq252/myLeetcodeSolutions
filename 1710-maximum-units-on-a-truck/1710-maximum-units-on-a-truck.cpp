@@ -12,10 +12,8 @@ public:
             ans+= (target>v[i].second)? (v[i].first*v[i].second):(v[i].first*target);
             if(target>v[i].second){
                 target-=v[i].second;
-                // ans+=(v[i].first*v[i].second);
             }
             else{
-                // ans+=(v[i].first*target);
                 break;
             }
         }
