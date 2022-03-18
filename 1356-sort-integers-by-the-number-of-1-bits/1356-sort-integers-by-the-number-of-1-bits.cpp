@@ -21,6 +21,5 @@ public:
             v.push_back(vec[i].second);
         }
         return v;
-
     }
 };
