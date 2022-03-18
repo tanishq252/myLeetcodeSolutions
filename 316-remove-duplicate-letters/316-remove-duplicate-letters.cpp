@@ -13,7 +13,7 @@ public:
         
         //we have to keep on checking the presence of characters
         for(int i=0;i<n;i++){
-            if(isVisited[str[i]-'a'] == false){
+            if(!isVisited[str[i]-'a']){
                 //if stack is not empty and top element of stack is repeated once again
                 //in the string which means that the top most element has it's duplicate
                 //and the current character is appearing before the top charcter in alphabetical 
