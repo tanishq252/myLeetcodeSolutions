@@ -21,7 +21,7 @@ public:
                     break;
                 }
             }
-            if(flag == 0){v.push_back(min);}
+            if(flag == 0){v.push_back(min);return v;}
         }
         return v;
     }
