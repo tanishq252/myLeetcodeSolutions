@@ -20,12 +20,12 @@ public:
     int countPrimeSetBits(int left, int right) {
         int c=0;
         // we have maximum 32 bits 
-        set<int> primes = {2,3,5,7,11,13,17,19,23,29,31};
+        vector<int> primes = {2,3,5,7,11,13,17,19,23,29,31};
         
         for(int i=left;i<=right;i++){
             // int m = numberofones(i);
             // if(isPrime(m)){c++;}
-            c+= primes.count((bitset<32>(i)).count());
+            c+= count(primes.begin(), primes.end(), (bitset<32>(i)).count());
 
         }
         return c;
