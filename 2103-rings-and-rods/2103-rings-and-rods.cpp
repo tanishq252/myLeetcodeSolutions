@@ -2,7 +2,6 @@ class Solution {
 public:
     int countPoints(string rings) {
         map <int, set<char>> m;
-        set<char> s;
         for(int i=0;i<rings.size();i+=2){
             m[rings[i+1]].insert(rings[i]);
         }
