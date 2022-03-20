@@ -22,7 +22,6 @@ public:
             }
         }
         set<int> st(tops.begin(), tops.end());
-        cout<<"\n"<<st.size();
         return (st.size()==1)?ans:-1;
     }
 };
