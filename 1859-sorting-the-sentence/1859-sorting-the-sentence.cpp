@@ -1,7 +1,6 @@
 class Solution {
 public:
     string sortSentence(string s) {
-        cout<<'9'-'a'<<"\n";
         vector<pair<int, string>> v;
         string t = "";
         for(int i=0;i<s.length();i++){
@@ -15,10 +14,8 @@ public:
         sort(v.begin(), v.end());
         string ans;
         for(int i=0;i<v.size();i++){
-            cout<<v[i].first<<" "<<v[i].second<<"\n";
             ans+= v[i].second;
             if(i!=v.size()-1){ans+=" ";}
-            
         }
         return ans;
     }
