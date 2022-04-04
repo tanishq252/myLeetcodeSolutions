@@ -20,9 +20,7 @@ public:
         swap(v[k-1], v[v.size()-k]);
         ListNode *newList = new ListNode(-1);
         ListNode *ptr = newList;
-        
         for(auto i:v){
-            cout<<i<<" ";
             ptr->next = new ListNode(i);
             ptr = ptr->next;
         }
