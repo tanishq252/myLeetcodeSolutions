@@ -15,9 +15,8 @@ public:
             v.push_back(make_pair(m[uv[i]], uv[i]));
         }
         sort(v.begin(), v.end());
-        reverse(v.begin(), v.end());
         for(int i=k, j=0;i>0;i--, j++){
-            ans.push_back(v[j].second);
+            ans.push_back(v[v.size()-1-j].second);
         }
         return ans;
     }
