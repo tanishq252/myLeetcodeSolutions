@@ -8,7 +8,8 @@ public:
             else if(ops[i]=="+"){v.push_back(v[v.size()-1]+v[v.size()-2]);}
             else{v.push_back(stoi(ops[i]));}
         }
-        int s = accumulate(v.begin(), v.end(), 0);
+        int s = 0;
+        for(auto i:v){s+=i;}
         return s;
     }
 };
