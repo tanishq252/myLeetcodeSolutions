@@ -6,10 +6,6 @@ public:
             v.push_back(min(rectangles[i][0], rectangles[i][1]));
         }
         int max = *max_element(v.begin(), v.end());
-        int c=0;
-        for(auto i:v){
-            if(i==max){c++;}
-        }
-        return c;
+        return count(v.begin(), v.end(), max);
     }
 };
