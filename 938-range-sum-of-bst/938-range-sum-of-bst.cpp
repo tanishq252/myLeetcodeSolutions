@@ -11,6 +11,7 @@
  */
 class Solution {
 public:
+    int s=0;
     
     int height(TreeNode *root){
         if(root==NULL){return 0;}
@@ -25,41 +26,32 @@ public:
         }
     }
 
-    void currentLevel(vector<int> &v, TreeNode *root, int level){
+    void currentLevel(TreeNode *root, int level, int low, int high){
         if(root==NULL){
             return;}
-        if(level == 1){v.push_back(root->val);}
+        if(level == 1){
+            int v = (root->val);
+            if(v>=low && v<=high){
+                s+=v;
+            }
+        }
         else if(level>1){
-            currentLevel(v, root->left, level-1);
-            currentLevel(v, root->right, level-1);
+            currentLevel(root->left, level-1, low, high);
+            currentLevel(root->right, level-1, low, high);
         }
     }
 
-    vector<int> printAllLevels(TreeNode *root){
-        vector<int> v;
+    int printAllLevels(TreeNode *root, int low, int high){
+        
         int h = height(root);
         for(int i=1;i<= h;i++){
-            currentLevel(v, root, i);
+            currentLevel(root, i, low, high);
         }
-        return v;
+        return s;
     }
     
     int rangeSumBST(TreeNode* root, int low, int high) {
-        vector<int> v = printAllLevels(root);
-        sort(v.begin(), v.end());
-        int s=0;
-        for(int i=0;i<v.size();i++){
-            if(v[i] == low){
-                while(v[i]<=high){
-                    if(v[i]==high){
-                        s+=v[i];
-                        return s;
-                    }
-                    s+=v[i++];
-                }
-                return s;
-            }
-        }
+        s = printAllLevels(root, low, high);
         return s;
     }
 };
