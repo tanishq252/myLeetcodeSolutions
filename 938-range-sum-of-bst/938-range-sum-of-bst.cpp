@@ -48,9 +48,6 @@ public:
         vector<int> v = printAllLevels(root);
         sort(v.begin(), v.end());
         int s=0;
-        for(auto i:v){
-            cout<<i<<" ";
-        }
         for(int i=0;i<v.size();i++){
             if(v[i] == low){
                 while(v[i]<=high){
@@ -58,8 +55,7 @@ public:
                         s+=v[i];
                         return s;
                     }
-                    s+=v[i];
-                    i++;
+                    s+=v[i++];
                 }
                 return s;
             }
