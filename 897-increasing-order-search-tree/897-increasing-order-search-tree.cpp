@@ -32,6 +32,9 @@ public:
                 ptr = ptr->right;
             }
         }
+        else{
+            return newTree;
+        }
         return newTree;
     }
     
