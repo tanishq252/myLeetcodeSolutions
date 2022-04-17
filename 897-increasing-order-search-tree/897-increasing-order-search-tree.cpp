@@ -27,7 +27,6 @@ public:
         if(v.size()>1){
             for(int i=1;i<v.size();i++){
                 TreeNode *newNode = new TreeNode(v[i]);
-                ptr->left = NULL;
                 ptr->right = newNode;
                 ptr = ptr->right;
             }
@@ -41,7 +40,6 @@ public:
     TreeNode* increasingBST(TreeNode* root) {
         vector<int> v;
         inorder(v, root);
-        for(auto i:v){cout<<i<<" ";}
         TreeNode *newTree = formTree(v);
         return newTree;
         
