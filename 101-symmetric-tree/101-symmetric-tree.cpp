@@ -11,14 +11,13 @@
  */
 class Solution {
 public:
-    void inOrder(vector<int> &v, TreeNode *root){
+    void preOrder(vector<int> &v, TreeNode *root){
         if(root==NULL){
-            v.push_back(-1001);
+            v.push_back(-101);
             return;}
-                v.push_back(root->val);
-
-        inOrder(v, root->left);
-        inOrder(v, root->right);
+        v.push_back(root->val);
+        preOrder(v, root->left);
+        preOrder(v, root->right);
     }
     
     void swap(TreeNode **n1, TreeNode **n2){
@@ -33,42 +32,12 @@ public:
         invert(root->right);
         swap(&(root->left), &(root->right));
     }
-
-    void preOrderInvert(TreeNode *root){
-        if(root==NULL){return;}
-        preOrderInvert((root->left));
-        preOrderInvert((root->right));
-        swap(&(root->left), &(root->right));
-    }
-    
-    TreeNode* invertTree(TreeNode* root) {
-        vector<int> v,m;
-        inOrder(v, root);
-        for(auto i:v){cout<<i<<" ";}
-        cout<<"\n";
-        
-        preOrderInvert(root);
-        inOrder(m, root);
-        for(auto i:m){cout<<i<<" ";}
-        cout<<"\n";
-        
-        return root;
-    }
     
     bool isSymmetric(TreeNode* root) {
-        // invert(root->left);
-        // return root->right==root->left;
-        
-        // inOrder(r, root);
-        // for(auto i:r){cout<<i<<" ";}
-        // cout<<"\n";
         vector<int> l,r;
-        preOrderInvert(root->right);
-        inOrder(l, root->right);
-                for(auto i:l){cout<<i<<" ";}
-        inOrder(r, root->left);
-                for(auto i:r){cout<<i<<" ";}
+        invert(root->right);
+        preOrder(l, root->right);
+        preOrder(r, root->left);
         return r==l;
-
     }
 };
