@@ -22,13 +22,19 @@ public:
     }
     
     bool isValidBST(TreeNode* root) {
-        vector<int> v;
+        vector<int> v, v1;
         inOrder(v, root);
-        for(int i=0;i<v.size()-1;i++){
-            if(v[i]>=v[i+1]){
-                return false;
-            }
+        v1 = v;
+        sort(v1.begin(), v1.end());
+        set<int> s (v.begin(), v.end());
+        if(s.size()!=v.size()){
+            return false;
         }
-        return true;
+        // for(int i=0;i<v.size()-1;i++){
+        //     if(v[i]>=v[i+1]){
+        //         return false;
+        //     }
+        // }
+        return v1 == v;
     }
 };
