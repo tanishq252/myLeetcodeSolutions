@@ -23,7 +23,7 @@ public:
                 while(!s.empty() && s.top()<=minValues[i]){
                     s.pop();
                 }
-                if(!s.empty() && s.top()>minValues[i]  && s.top()<nums[i]){
+                if(!s.empty() &&  s.top()<nums[i]){
                     return true;
                 }
                 s.push(nums[i]);
