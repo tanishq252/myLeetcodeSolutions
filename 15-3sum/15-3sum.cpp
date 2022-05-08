@@ -20,9 +20,8 @@ public:
                     if(f==0){
                         if(i!=j && i!=k)
                             {vector<int> v = {nums[i], nums[j], nums[k]};
-                            sort(v.begin(), v.end());
+                            // sort(v.begin(), v.end());
                             s.insert(v);
-                            // cout<<"kmd"<<" ";
                             }
                         j++; 
                         k--;
