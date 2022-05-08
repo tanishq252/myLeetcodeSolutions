@@ -6,11 +6,7 @@ public:
         set<vector<int>> st;
         int n = nums.size();
         if(n<4){return ans;}
-        for(int i=0;i<nums.size();i++){
-            // if(i>0){
-                // while(i<n && nums[i]==nums[i-1])
-            //         i++;
-            // }
+        for(int i=0;i<nums.size()-3;i++){
             for(int j=i+1;j<n-2;j++){
                 int k = j+1;
                 int l = n-1;
