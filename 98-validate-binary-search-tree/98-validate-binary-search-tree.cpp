@@ -30,11 +30,6 @@ public:
         if(s.size()!=v.size()){
             return false;
         }
-        // for(int i=0;i<v.size()-1;i++){
-        //     if(v[i]>=v[i+1]){
-        //         return false;
-        //     }
-        // }
         return v1 == v;
     }
 };
