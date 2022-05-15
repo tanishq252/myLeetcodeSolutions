@@ -25,9 +25,7 @@ public:
     }
     int deepestLeavesSum(TreeNode* root) {
         vector<vector<int>> ans;
-        int s=0;
         levelOrder(root, ans, 0);
-        s = accumulate(ans[ans.size()-1].begin(), ans[ans.size()-1].end(),0);
-        return s;
+        return accumulate(ans[ans.size()-1].begin(), ans[ans.size()-1].end(),0);
     }
 };
