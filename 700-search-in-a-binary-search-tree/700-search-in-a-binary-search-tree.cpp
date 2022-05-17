@@ -11,27 +11,24 @@
  */
 class Solution {
 public:
+    void recursiveSearch(TreeNode *root,int val, TreeNode **ans){
+        if(root==NULL) return;
+        if(root->val==val){
+            *ans = root;
+            return;
+        }else if(root->val > val){
+            recursiveSearch(root->left, val, ans);
+        }else if(root->val < val){
+            recursiveSearch(root->right, val, ans);
+        }
+        // else{
+        //     return;
+        // }
+    }
     TreeNode* searchBST(TreeNode* root, int val) {
-        if(root==NULL){
-            return NULL;
-        }
-        
-        while(root->val!=val){
-            if(root->val>val){
-                root = searchBST(root->left, val);
-                if(root==NULL){
-                    return NULL;
-                }
-            }
-            else if(root->val<val){
-                root = searchBST(root->right, val);
-                if(root==NULL){
-                    return NULL;
-                }
-            }
-        }
-        
-        return root;
+        TreeNode *ans=NULL;
+        recursiveSearch(root, val, &ans);
+        return ans;
         
     }
 };
