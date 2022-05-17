@@ -7,7 +7,6 @@
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
-
 class Solution {
 public:
     TreeNode *roott;
@@ -26,11 +25,8 @@ public:
             return nodedepth(root->left, node, depth)+1;}
         else {
             return nodedepth(root->right, node, depth)+1;}
-        // return max(l,r);
         return 0;
     }
-    
-    
     
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
         roott = root;
@@ -47,13 +43,7 @@ public:
         cout<<small<<" "<<large;
         inOrder(root, small, large, ancestors);
         vector<int> ans;
-        // for(auto i:ancestors){
-        //     ans.push_back(i->val);
-        // }
         sort(ancestors.begin(), ancestors.end());
         return ancestors[0].second;
-        // int d = nodedepth(root, root->left->right->left, 0);
-        // cout<<d;
-        // return NULL;
     }
 };
