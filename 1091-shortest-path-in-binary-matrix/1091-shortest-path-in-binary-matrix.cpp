@@ -1,50 +1,51 @@
 class Solution {
 public:
+
+    bool valid(vector<vector<int>>& grid, int i, int j, vector<vector<bool>>& visited){
+        if(i>=0 and i<grid.size() and j>=0 and j<grid.size() and grid[i][j]==0 and visited[i][j]==false){
+            return true;
+        }
+        return false;
+    }
     
-    bool isValid(vector<vector<int>>& grid, int i, int j, int n, vector<vector<bool>>& visited){
-        
-        return (i>=0 and i<n and j>=0 and j<n and grid[i][j]==0 and !visited[i][j]);
-        
+    void traverseNeighbours(vector<vector<int>>& grid, vector<vector<bool>>& visited, int x, int y, queue<pair<int, int>>& nodes){
+        for(int i = x-1;i<=x+1;i++){
+            for(int j = y-1;j<=y+1;j++){
+                if(valid(grid, i, j, visited)){
+                    visited[i][j] = true;
+                    nodes.push({i, j});
+                }
+            }
+        }
     }
     
     int shortestPathBinaryMatrix(vector<vector<int>>& grid) {
-        
         int n = grid.size();
-        vector<vector<bool>> visited(n, vector<bool> (n, false));
-        queue<pair<int, int>> q;
-        int ans = 0;
-        int nodesPushed;
+        vector<vector<bool>> visited(n , vector<bool>(n, false));
+        queue<pair<int, int>>  nodes;
+        int totalNodes;
+        int ans=0;
         
         if(grid[0][0] == 0){
-            q.push({0, 0});
             visited[0][0] = true;
+            nodes.push({0,0});
         }
-                
-        while(!q.empty()){
-            
-            nodesPushed = q.size();
-            ans++;
-            
-            for(int cnt = 0; cnt < nodesPushed; cnt++){
-                
-                pair<int, int> frontNode = q.front();
-                q.pop();
-            
-                int i = frontNode.first, j = frontNode.second;
+        
+        
+        while(!nodes.empty()){
+                totalNodes = nodes.size();
+                ans++;
 
-                if(i==n-1 and j==n-1) return ans;
 
-                for(int k = i - 1; k <= i + 1 ; k++){
-                    for(int l = j - 1; l <= j + 1; l++){
-                        if(isValid(grid, k, l, n, visited)){
-                            q.push({k, l});
-                            visited[k][l] = true;
-                        }
-                    }
-                }                
-                
-            }            
-            
+            for(int k=0;k<totalNodes;k++){
+                pair<int,int> initialNode = nodes.front();
+                nodes.pop();
+                int x = initialNode.first;
+                int y = initialNode.second;
+                if(x==n-1 and y==n-1) return ans;
+                //here we traverse through all 8 neighbouring coordinates of a given point
+                traverseNeighbours(grid, visited, x, y, nodes);
+            }
         }
         
         return -1;
