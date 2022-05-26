@@ -9,13 +9,7 @@
  * };
  */
 class Solution {
-public:
-    void swap(ListNode **n1, ListNode **n2){
-        ListNode *temp = *n1;
-        *n1 = *n2;
-        *n2 = temp;
-    }
-    
+public: 
     void insert(ListNode **head, int data){
         if((*head) == NULL) {(*head) = new ListNode(data);return;}
         ListNode *temp = *head;
@@ -39,6 +33,6 @@ public:
             temp = temp->next->next;
             if(temp==NULL) break;
         }
-        return headnew;
+        return head=headnew;
     }
 };
