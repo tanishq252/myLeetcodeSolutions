@@ -2,6 +2,7 @@ class Solution {
 public:
     int search(vector<int>& nums, int target) {
         int n = nums.size();
+        if(count(nums.begin(), nums.end(), target) == 0) return -1;
         if(n==1 && nums[0]!=target){return -1;}
         if(nums[0] == target){return 0;}
         if(nums[n-1] == target){return n-1;}
