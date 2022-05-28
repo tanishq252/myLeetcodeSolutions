@@ -18,24 +18,48 @@ public:
 
 class Solution {
 public:
-    void leveltraverse(Node *root, vector<vector<Node*>> &level,int depth){
-        if(root==NULL) return;
-        if(depth == level.size()){
-            level.push_back({});
+//     void leveltraverse(Node *root, vector<vector<Node*>> &level,int depth){
+//         if(root==NULL) return;
+//         if(depth == level.size()){
+//             level.push_back({});
+//         }
+//         level[depth].push_back(root);
+//         leveltraverse(root->left, level, depth+1);        
+//         leveltraverse(root->right, level, depth+1);
+//     }
+    
+//     Node* connect(Node* root) {
+//         vector<vector<Node*>> level;
+//         leveltraverse(root, level, 0);
+//         for(auto i:level){
+//             for(int j=0;j<i.size()-1;j++){
+//                 i[j]->next = i[j+1];
+//             }
+//         }
+//         return root;
+//     }
+    
+    void join(Node* root){
+        if(!root){
+            return;
         }
-        level[depth].push_back(root);
-        leveltraverse(root->left, level, depth+1);        
-        leveltraverse(root->right, level, depth+1);
+        
+        if(!root->left and !root->right){
+            return;
+        }
+        
+        root->left->next = root->right;
+        
+        if(root->next){
+            root->right->next = root->next->left;
+        }
+        
+        join(root->left);
+        join(root->right);
     }
     
     Node* connect(Node* root) {
-        vector<vector<Node*>> level;
-        leveltraverse(root, level, 0);
-        for(auto i:level){
-            for(int j=0;j<i.size()-1;j++){
-                i[j]->next = i[j+1];
-            }
-        }
+        join(root);
         return root;
     }
 };
