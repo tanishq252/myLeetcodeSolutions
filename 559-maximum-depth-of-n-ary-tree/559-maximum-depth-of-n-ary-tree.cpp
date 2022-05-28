@@ -20,20 +20,12 @@ public:
 
 class Solution {
 public:
-    void leveltraverse(Node *root, vector<vector<int>> &level,int depth){
-        if(root==NULL) return;
-        if(depth == level.size()){
-            level.push_back({});
-        }
-        level[depth].push_back(root->val);
-        for(int i=0;i<root->children.size();i++){
-            leveltraverse(root->children[i], level, depth+1);
-        }
-    }
-    
     int maxDepth(Node* root) {
-        vector<vector<int>> level;
-        leveltraverse(root, level, 0);
-        return level.size();
+        if(root==NULL)return 0;
+            int mx = 0;
+        for(int i=0;i<root->children.size();i++){
+            mx = max(mx, maxDepth(root->children[i]));
+        }
+        return mx = mx+1;
     }
 };
