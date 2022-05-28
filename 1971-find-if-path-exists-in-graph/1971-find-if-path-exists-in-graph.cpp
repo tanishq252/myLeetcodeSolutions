@@ -18,9 +18,14 @@ public:
         return visited[dest];
     }
     
-    // bool dfs(vector<vector<int>> &adjList, int start, int dest){
-    //     re
-    // }
+    void dfs(vector<vector<int>> &adjList, int start, vector<int> &visited){
+        visited[start] = 1;
+        for(auto i:adjList[start]){
+            if(!visited[i]){
+                dfs(adjList, i, visited);
+            }
+        }
+    }
     
     bool validPath(int n, vector<vector<int>>& edges, int source, int destination) {
         vector<vector<int>> adj(n);
@@ -28,7 +33,8 @@ public:
             adj[i[0]].push_back(i[1]);            
             adj[i[1]].push_back(i[0]);
         }
-        
-        return bfs(adj, source, destination);;
+        vector<int> visited(n, 0);
+        dfs(adj, source, visited);
+        return visited[destination];
     }
 };
