@@ -11,6 +11,7 @@ public:
         for(int i=0;i<=s.length()-k;i++){
             string temp(s.begin()+i, s.begin()+i+k);
             st.insert(temp);
+            if(st.size() == n) return true;
         }
 
         return st.size() == n;
