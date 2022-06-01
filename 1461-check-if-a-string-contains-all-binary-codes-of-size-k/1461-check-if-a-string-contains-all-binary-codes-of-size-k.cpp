@@ -1,19 +1,13 @@
 class Solution {
 public:
     bool hasAllCodes(string s, int k) {
-        int n = 2;
-        if(k>=s.length()) return false;
-        for(int i=1;i<k;i++){
-            n<<=1;
-        }
+        if(s.size() <= k) return false;
         set<string> st;
-        cout<<n;
+        int n = 1<<k;
         for(int i=0;i<=s.length()-k;i++){
-            string temp(s.begin()+i, s.begin()+i+k);
-            st.insert(temp);
-            if(st.size() == n) return true;
+            string t(s.begin()+i, s.begin()+i+k);
+            st.insert(t);
         }
-
         return st.size() == n;
     }
 };
