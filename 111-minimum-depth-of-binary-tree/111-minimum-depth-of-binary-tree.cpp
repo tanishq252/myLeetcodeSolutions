@@ -11,15 +11,7 @@
  */
 class Solution {
 public:
-    int mindepth = 0;
-    
-    void levelOrder(TreeNode *root,int depth){
-        if(root==NULL) {mindepth = depth-1; return;}
-        levelOrder(root->left, depth+1);
-        levelOrder(root->right, depth+1);
-    }
-    
-    int minDepth(TreeNode* root) {
+   int minDepth(TreeNode* root) {
         if(root==NULL) return 0;
         int l = minDepth(root->left);
         int r = minDepth(root->right);
