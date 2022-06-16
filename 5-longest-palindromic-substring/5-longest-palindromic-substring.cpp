@@ -1,28 +1,26 @@
 class Solution {
 public:
     string longestPalindrome(string s) {
-        int m = 1;
+        int left = 0, right = 0;
         string ans = "";
         ans+=s[0];
-        if(s.size() == 1) return s;
-        for(int i=0;i<s.size();i++){
-            int left = i, right=i;
-            while(left>=0 and right<s.size() and s[left] == s[right]){
+        int n = s.length();
+        for(int i=0;i<n-1;i++){
+            left = i, right = i;
+            while(left>=0 and right<=n-1 and s[left] == s[right]){
                 left--;right++;
             }
-            string s1(s.begin()+(left+1), s.begin()+right);
-            if(s1.size() > m){
-                ans = s1;
-                m = ans.size();
+            string ts1(s.begin()+left+1, s.begin()+right);
+            if(ts1.length()>ans.length()){
+                ans = ts1;
             }
-            left = i, right=i+1;
-            while(left>=0 and right<s.size() and s[left] == s[right]){
+            left = i, right = i+1;
+            while(left>=0 and right<=n-1 and s[left] == s[right]){
                 left--;right++;
             }
-            string s2(s.begin()+left+1, s.begin()+right);
-            if(s2.size() > m){
-                ans = s2;
-                m = ans.size();
+            string ts2(s.begin()+left+1, s.begin()+right);
+            if(ts2.length()>ans.length()){
+                ans = ts2;
             }
         }
         return ans;
