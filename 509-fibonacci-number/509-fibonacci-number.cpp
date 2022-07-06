@@ -1,7 +1,7 @@
 class Solution {
 public:
     int fib(int n) {
-        vector<int> v = {1,1};
+                vector<int> v = {1,1};
         if(n==0){
             return 0;
         }
