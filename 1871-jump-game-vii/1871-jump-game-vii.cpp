@@ -13,29 +13,5 @@ public:
            lower=upper+1; 
          }
         return dp[n-1];
-        // vector<int> dp(s.length(), false);
-        // int upper, lower=0;
-        // if(s[s.length() - 1]!='0'){
-        //         return false;
-        //     }
-        // dp[0] = true;
-        // for(int i=0;i<s.length();i++){
-        //     upper = (s.length()-1 > i+maxJump) ? i+maxJump:s.length()-1;
-        //                 cout<<lower<<" "<<upper<<"\n";
-        //     lower = (i+minJump>lower)?i+minJump:lower;
-        //     if(upper<lower) break;
-        //     if(dp[i]){
-        //         for(int j =lower;j<=upper;j++){
-        //             if(s[j] == '0'){
-        //                 dp[j] = true;
-        //             }
-        //         }
-        //     }
-        //     lower = upper;
-        // }
-        // for(auto i:dp){
-        //     cout<<i<<" ";
-        // }
-        // return dp[dp.size() - 1];
     }
 };
