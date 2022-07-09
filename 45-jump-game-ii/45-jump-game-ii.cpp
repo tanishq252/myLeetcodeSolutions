@@ -12,7 +12,6 @@ public:
                 }
             }
         }
-        // cout<<dp[n-1];
         return dp[n-1];
     }
 };
