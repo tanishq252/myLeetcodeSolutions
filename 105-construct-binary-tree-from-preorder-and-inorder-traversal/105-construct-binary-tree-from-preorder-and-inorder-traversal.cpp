@@ -26,7 +26,7 @@ public:
         int rootVal = preOrder[preOrderIndex++];
         TreeNode *root = new TreeNode(rootVal);
         
-        root->left = convertToTree(preOrder, left, inorderIndex[rootVal]-1);                   root->right = convertToTree(preOrder, inorderIndex[rootVal]+1, right);
+        root->left = convertToTree(preOrder, left, inorderIndex[rootVal]-1);                 root->right = convertToTree(preOrder, inorderIndex[rootVal]+1, right);
         return root;
     }
 };
