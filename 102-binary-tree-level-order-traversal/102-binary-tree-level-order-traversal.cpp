@@ -11,21 +11,18 @@
  */
 class Solution {
 public:
-    vector<vector<int>> v;
-    
-    void LevelOrder(TreeNode *root, int depth){
-        if(root==NULL){return;}
-        else if(v.size() == depth){
-            v.push_back(vector<int> ());
-        }
+    void lvlOrd(vector<vector<int>> &v, int depth, TreeNode *root){
+        if(root == NULL) return;
+        if(v.size() ==  depth) v.push_back({});
         v[depth].push_back(root->val);
-        LevelOrder(root->left, depth+1);        
-        LevelOrder(root->right, depth+1);
+        lvlOrd(v, depth+1, root->left);        
+        lvlOrd(v, depth+1, root->right);
 
     }
     
     vector<vector<int>> levelOrder(TreeNode* root) {
-        LevelOrder(root, 0);
+        vector<vector<int>> v;
+        lvlOrd(v, 0, root);
         return v;
     }
 };
