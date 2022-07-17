@@ -11,7 +11,7 @@ public:
                 if(j>=i){
                     x-=v[i-1][j-i];
                 }
-                v[i][j] = (v[i][j]+x)%mod;
+                v[i][j] = ((long long)v[i][j]+x)%mod;
             }
         }
         return v[n][k];
