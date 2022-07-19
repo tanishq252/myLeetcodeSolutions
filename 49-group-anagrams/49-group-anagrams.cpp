@@ -9,13 +9,11 @@ public:
             sort(ans.begin(), ans.end());
             mp[ans].push_back(i);
         }
-        for(auto i: strs){
-            ans = i;
-            sort(ans.begin(), ans.end());
-            ansSet.insert(mp[ans]);
+        vector<vector<string>> ansVec;
+        for(auto i: mp){
+            ansVec.push_back(i.second);
         }
-        vector<vector<string>> ansVec(ansSet.begin(), ansSet.end());
-        // cout<<ans;
+        // vector<vector<string>> ansVec(ansSet.begin(), ansSet.end());
         return ansVec;
     }
 };
