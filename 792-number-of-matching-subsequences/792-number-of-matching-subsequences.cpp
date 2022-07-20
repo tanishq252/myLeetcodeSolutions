@@ -1,11 +1,13 @@
 class Solution {
 public:
+    
+    // function using dynamic programming to check the subsequence of strings
+    // as there are 2 loops the time complexity is o(n^2) hence it gives TLE
     bool isSubSequence(string s1, string s2){
         int m = s1.length();        
         int n = s2.length();
         vector<vector<int>> dp(m+1, vector<int> (n+1, 0));
         for(int i=0;i<m;i++){
-            cout<<"\n"<<i<<"->";
             for(int j=0;j<n;j++){
                 if(s1[i] == s2[j]){
                     dp[i+1][j+1] = dp[i][j]+1;
@@ -14,13 +16,12 @@ public:
                     dp[i+1][j+1] = max(dp[i][j+1], dp[i+1][j]);
                 }
             }
-            cout<<dp[i+1][n]<<" ";
             if(i+1 != dp[i+1][n]) return false;
         }
-        cout<<"\n";
         return false;
     }
     
+    // this is a simple logic to check subsequence with simple traversal
     bool isSubSequence2(string s1, string s2){
         int m = s1.length();        
         int n = s2.length();
@@ -36,14 +37,20 @@ public:
     
     int numMatchingSubseq(string s, vector<string>& words) {
         int counter=0;
+        
+        //as there can be a probablity of having multiple identical words which increases number of operations
+        // hence map mp stores frequency of all words and set is used to store unique words
         unordered_map<string, int> mp;
         set<string> st;
         for(auto i:words){
             st.insert(i);
             mp[i]++;
         }
-        vector<string> wordss(st.begin(), st.end());
-        for(auto i:wordss){
+        
+        //further using stl we convert the set to vector for traversing unique words 
+        //if a word is subsequence we will add it's frequency to counter which keeps track of all sebsequences
+        vector<string> uniqueWords(st.begin(), st.end());
+        for(auto i:uniqueWords){
             counter+= (isSubSequence2(i, s)) ? mp[i]:0;
         }
         return counter;
