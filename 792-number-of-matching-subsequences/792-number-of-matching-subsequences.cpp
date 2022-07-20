@@ -41,17 +41,14 @@ public:
         //as there can be a probablity of having multiple identical words which increases number of operations
         // hence map mp stores frequency of all words and set is used to store unique words
         unordered_map<string, int> mp;
-        set<string> st;
         for(auto i:words){
-            st.insert(i);
             mp[i]++;
         }
         
         //further using stl we convert the set to vector for traversing unique words 
         //if a word is subsequence we will add it's frequency to counter which keeps track of all sebsequences
-        vector<string> uniqueWords(st.begin(), st.end());
-        for(auto i:uniqueWords){
-            counter+= (isSubSequence2(i, s)) ? mp[i]:0;
+        for(auto i:mp){
+            counter+= (isSubSequence2(i.first, s)) ? i.second:0;
         }
         return counter;
     }
