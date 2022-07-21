@@ -19,12 +19,8 @@ public:
         int count = right-left;
         if(!count) return head;
         left--;
-        // cout<<left;
-        // if(left){
-            ListNode *prev=NULL;
-        // }
+        ListNode *prev=NULL;
         while(left--){
-            cout<<"next"<<" ";
             prev = current;
             current = current->next;
         }
@@ -36,11 +32,9 @@ public:
             nextNode->next = current;
             current = nextNode;
         }
-        // cout<<current->next->val;
-        cout<<left<<" ";
         if(tLeft!=1){
             prev -> next = current;
-            cout<<"sdlmsvfvfv";}
+        }
         return (tLeft!=1) ? head:current;
     }
 };
