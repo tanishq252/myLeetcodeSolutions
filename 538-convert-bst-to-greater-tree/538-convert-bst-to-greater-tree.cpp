@@ -11,14 +11,20 @@
  */
 class Solution {
 public:
-    int s=0;
+    int greaterSum(TreeNode *root, int prevSum){
+        if(root == NULL) return 0;
+        int currentSum = root->val;
+        currentSum+=greaterSum(root->right, 0+prevSum);
+        root->val = currentSum+prevSum;
+        currentSum+=greaterSum(root->left, currentSum+prevSum);
+        return currentSum;
+    }
+    
     TreeNode* convertBST(TreeNode* root) {
-        if(root!=NULL){
-            convertBST(root->right);            
-            s+=root->val;
-            root->val = s;
-            convertBST(root->left);
-        }
+        if(root == NULL) return root;
+        int findGreaterRight = greaterSum(root->right, 0);
+        root->val += findGreaterRight;
+        int findGreaterLeft = greaterSum(root->left, root->val);
         return root;
     }
 };
