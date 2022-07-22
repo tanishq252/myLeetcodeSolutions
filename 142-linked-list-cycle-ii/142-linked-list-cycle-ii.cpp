@@ -10,13 +10,12 @@ class Solution {
 public:
     ListNode *detectCycle(ListNode *head) {
         map<ListNode *, int> mp;
-        int i=0;     
         ListNode *temp = head;
         while(temp!=NULL){
             if(mp.find(temp)!=mp.end()){
                 return temp;
             }
-            mp[temp] = i++;
+            mp[temp] = 1;
             temp = temp->next;
         }
         return NULL;
