@@ -13,7 +13,6 @@ public:
         if(beams.size()){
             for(int i=0;i<beams.size() - 1;i++){
                 beams[i]*=beams[i+1];
-                // ans+=beams[i];
                 cout<<beams[i]<<" ";
             }
             return accumulate(beams.begin(), beams.end()-1, 0);
