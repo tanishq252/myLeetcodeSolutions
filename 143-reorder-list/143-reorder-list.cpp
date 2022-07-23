@@ -21,7 +21,6 @@ public:
         int i=0;
         int n = nodes.size();
         while(temp!=NULL){
-            cout<<nodes[i]<<" ";
             temp->val = nodes[i];
             if(temp->next!=NULL){
                 temp->next->val = nodes[n-i-1];
