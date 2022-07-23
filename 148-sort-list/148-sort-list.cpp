@@ -14,12 +14,9 @@ public:
         ListNode *fast = head->next;
         ListNode *slow = head;
         
-        while(fast!=NULL){
-            fast = fast->next;
-            if(fast!=NULL){
-                fast = fast->next;
-                slow = slow->next;
-            }
+        while(fast and fast->next and slow){
+            fast = fast->next->next;
+            slow = slow->next;
         }
         *frontPart = head;
         *backPart = slow->next;
