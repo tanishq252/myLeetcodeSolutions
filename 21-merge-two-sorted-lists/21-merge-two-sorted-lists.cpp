@@ -10,57 +10,23 @@
  */
 class Solution {
 public:
-    ListNode* mergeTwoLists(ListNode* t1, ListNode* t2) {
+    ListNode *mergeLists(ListNode *list1, ListNode *list2){
+        ListNode *mergedList = NULL;
         
-//         recursion
+        if(list1 == NULL){return list2;}
+        if(list2 == NULL){return list1;}
         
-        if(t1==NULL){return t2;}
-        else if(t2 == NULL){return t1;}
-        
-        
-        if(t1->val<t2->val){
-            t1->next = mergeTwoLists(t1->next, t2);
-            return t1;
-        }
-        else{
-            t2->next = mergeTwoLists(t2->next, t1);
-            return t2;
+        if(list1->val < list2->val){
+            mergedList = list1;
+            mergedList->next = mergeLists(list1->next, list2);
+        }else{
+            mergedList = list2;
+            mergedList->next = mergeLists(list1, list2->next);
         }
         
-        
-        
-//          USING BASIC LOOPS   
-        
-//         ListNode* newList = NULL;
-//         if(t1==NULL){return t2;}
-//         else if(t2 == NULL){return t1;}
-
-//         if(t1->val<t2->val){
-//             newList = t1;
-//             t1 = t1->next;
-//         }else{
-//             newList = t2;
-//             t2 = t2->next;
-//         }
-//         ListNode* temp = newList;
-//         while(t1!=NULL && t2!=NULL){
-//             if(t1->val < t2->val){
-//                 temp->next = t1;
-//                 t1 = t1->next;
-
-//             }else{
-//                 temp->next = t2;
-//                 t2 = t2->next;
-//                 cout<<"oo"<<"\n";
-//             }
-//             temp = temp->next;
-//         }
-        
-//         if(t1){
-//             temp->next = t1;
-//         }else{
-//             temp->next = t2;
-//         }
-//         return newList;
+        return mergedList;
+    }
+    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+        return mergeLists(list1, list2);
     }
 };
