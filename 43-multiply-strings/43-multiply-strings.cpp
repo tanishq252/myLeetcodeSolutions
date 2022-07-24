@@ -10,7 +10,6 @@ public:
             for(int j=n-1;j>=0;j--){
                 int product= (num1[i]-'0')*(num2[j]-'0')+(ans[i+j+1]-'0');
                 ans[i+j+1] = product%10 + '0';
-                cout<<product<<" ";
                 ans[i+j] += product/10;
             }
         }
