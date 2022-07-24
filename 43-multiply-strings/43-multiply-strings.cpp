@@ -3,19 +3,20 @@ public:
     string multiply(string num1, string num2) {
         int m = num1.size();
         int n = num2.size();
-        string ans(m+n, '0');        
-        string tempAns(m+n, '0');
-
+        string ans(n+m, '0');        
+        string tempans(n+m, '0');
+        // int product;
         for(int i=m-1;i>=0;i--){
             for(int j=n-1;j>=0;j--){
-                int currentProduct = (num1[i]-'0')*(num2[j]-'0') + (ans[i+j+1]-'0');
-                ans[i+j+1] = currentProduct%10 + '0';
-                ans[i+j] += currentProduct/10;
+                int product= (num1[i]-'0')*(num2[j]-'0')+(ans[i+j+1]-'0');
+                ans[i+j+1] = product%10 + '0';
+                cout<<product<<" ";
+                ans[i+j] += product/10;
             }
         }
         for(int i=0;i<ans.size();i++){
             if(ans[i]!='0') return ans.substr(i);
         }
-        return (ans == tempAns) ? "0":ans;
+        return (tempans == ans)? "0":ans ;
     }
 };
