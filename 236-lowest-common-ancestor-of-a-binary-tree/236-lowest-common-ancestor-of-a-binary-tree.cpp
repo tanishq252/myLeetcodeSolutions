@@ -9,15 +9,41 @@
  */
 class Solution {
 public:
-     void getAncestors(TreeNode *root, TreeNode* p, TreeNode* q, int depth, vector<pair<int, TreeNode*>> &ancestors){
+//     priority_queue<pair<int, TreeNode*>> pq;
+    
+//     void findDescendants(TreeNode *root, TreeNode *p, TreeNode *q, int depth){
+//         if(root==NULL) return;
+//         map<TreeNode*, int> mp;
+//         checkNodes(root, p, q, mp);
+//         if(mp.find(q)!=mp.end() and mp.find(p)!=mp.end()){
+//             pq.push({depth, root});
+//         }
+//         mp.clear();
+//         findDescendants(root->left, p, q, depth+1);        
+//         findDescendants(root->right, p, q, depth+1);
+//     }
+    
+//     void checkNodes(TreeNode *root, TreeNode *p, TreeNode *q, map<TreeNode *, int> &mp){
+//         if(root==NULL) return;
+//         mp[root]++;
+//         if(mp.find(q)!=mp.end() and mp.find(p)!=mp.end()){
+//             cout<<"fond\n";
+//             return;
+//         }
+//         checkNodes(root->left, p, q, mp);        
+//         checkNodes(root->right, p, q, mp);
+//     }
+    
+    priority_queue<pair<int, TreeNode*>> ancestors;
+     void getAncestors(TreeNode *root, TreeNode* p, TreeNode* q, int depth){
         if(root==NULL){
             return;
         }
-        getAncestors(root->left,p,q,depth+1, ancestors);        
+        getAncestors(root->left,p,q,depth+1);        
         if(hasDescendant(root,p,q)){
-            ancestors.push_back({depth, root});
+            ancestors.push({depth, root});
         }
-        getAncestors(root->right,p,q,depth+1, ancestors);
+        getAncestors(root->right,p,q,depth+1);
 
     }
     
@@ -37,11 +63,7 @@ public:
     }
     
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-        vector<pair<int, TreeNode*>> ancestors;
-        getAncestors(root, p, q, 0, ancestors);
-        sort(ancestors.begin(), ancestors.end());
-        return ancestors[ancestors.size()-1].second;
+        getAncestors(root, p, q, 0);
+        return ancestors.top().second;
     }
-    
-   
 };
