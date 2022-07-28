@@ -1,11 +1,12 @@
 class Solution {
 public:
     bool isCycle(int node, vector<vector<int>> &adjacencyList, vector<int> &visited){
+        //node is revisited, then forms the cycle
         if(visited[node] == 1){
             return true;
         }
-        if(visited[node]==0){
-            //start of the search for cycle
+        if(visited[node] == 0){
+            //mark the start of cycle
             visited[node] = 1;
             for(auto child:adjacencyList[node]){
                 if(isCycle(child, adjacencyList, visited)){
@@ -13,6 +14,7 @@ public:
                 }
             }
         }
+        //all children are visited then the parent node has to be colored as 2
         visited[node] = 2;
         return false;
     }
