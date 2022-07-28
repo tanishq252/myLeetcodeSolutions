@@ -16,7 +16,7 @@ public:
         if (window1 == window2) return true;
         
         for(int i=a;i<b;i++){
-            window1[s2[i-a]-'a']++;            
+            window2[s2[i-a]-'a']--;            
             window2[s2[i]-'a']++;
             if (window1 == window2) return true;
         }
