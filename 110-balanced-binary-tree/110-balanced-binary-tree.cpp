@@ -24,24 +24,18 @@ public:
         return max(l, r)+1;
     }
     
-    void levelOrder(vector<vector<int>> &v, TreeNode *root, int depth){
-        if(root==NULL) return;
-        if(v.size() == depth) v.push_back({});
-        v[depth].push_back(root->val);
-        levelOrder(v, root->left, depth+1);        
-        levelOrder(v, root->right, depth+1);
-
+    int depth(TreeNode *root){
+        if(root == NULL) return 0;
+        return max(depth(root->left), depth(root->right))+1;
     }
-    
+
     bool isBalanced(TreeNode* root) {
         if(root==NULL) return true;
         
-        int l = findHeight(root->left);        
-        int r = findHeight(root->right);
+        int l = depth(root->left);        
+        int r = depth(root->right);
         
-        if(abs(l-r)>1) ans = false;
-        
-        return ans;
+        return abs(l-r)<=1 and isBalanced(root->left) and isBalanced(root->right);
 
     }
 };
