@@ -20,7 +20,7 @@ public:
         int l=0, r=0;
         if(root->left!=NULL) l = findHeight(root->left);        
         if(root->right!=NULL) r = findHeight(root->right);
-        if(abs(l-r) > 1) ans = false;
+        if(abs(l-r) > 1) {ans = false; return 0;}
         return max(l, r)+1;
     }
     
