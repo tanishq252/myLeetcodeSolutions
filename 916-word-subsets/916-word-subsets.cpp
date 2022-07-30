@@ -30,7 +30,7 @@ public:
             }
             if(!flag){
                     ans.push_back(j);
-                }
+         }
         }
         
         return ans;
