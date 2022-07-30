@@ -7,9 +7,6 @@ public:
             sum+=nums[i];
             if(max < sum){
                 max = sum;
-                if(sum<0){
-                    sum=0;
-                }
             }
             if(sum<0){
                 sum=0;
