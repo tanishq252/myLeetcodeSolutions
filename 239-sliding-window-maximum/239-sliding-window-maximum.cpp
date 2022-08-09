@@ -1,18 +1,20 @@
 class Solution {
 public:
     vector<int> maxSlidingWindow(vector<int>& nums, int k) {
-        
-    vector<int> result;
-    if (k == 0) return result;
-    priority_queue<pair<int, int>> w;
-    for (int i = 0, n = (int)nums.size(); i < n; i++) {
-        while (!w.empty() && w.top().second <= i-k)
-            w.pop();
-        w.push(make_pair(nums[i],i));
-        if (i >= k-1)
-            result.push_back(w.top().first);
+        vector<int> ans;
+        int n = nums.size();
+        if(n == k) return {*max_element(nums.begin(), nums.end())};
+        if(k == 1) return nums;
+
+    priority_queue<pair<int, int>> pq;
+    for (int i = 0;i < n; i++) {
+        while(!pq.empty() and pq.top().second <= i-k ) pq.pop();
+        pq.push({nums[i], i});
+        if(i>=k-1){
+            ans.push_back(pq.top().first);
+        }
     }
-    return result;
+    return ans;
     }
         
         // brute force
