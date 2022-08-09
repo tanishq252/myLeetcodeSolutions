@@ -22,9 +22,9 @@ public:
             
         }
         
+        // 
         long s = 0;
         for(auto i:mp){
-            
             s+= (i.second);
         }
         
