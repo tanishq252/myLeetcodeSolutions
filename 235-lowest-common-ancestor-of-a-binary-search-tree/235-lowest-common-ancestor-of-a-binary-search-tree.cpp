@@ -7,10 +7,10 @@
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
+
 class Solution {
 public:
-
-    void inOrder(TreeNode *root, TreeNode* p,TreeNode* q, vector<pair<int, TreeNode*>> &ancestors, int depth){
+        void inOrder(TreeNode *root, TreeNode* p,TreeNode* q, vector<pair<int, TreeNode*>> &ancestors, int depth){
         if(root==NULL){return;}
         inOrder(root->left, p, q, ancestors, depth+1);        
         if(root->val >= p->val and root->val <= q->val){
