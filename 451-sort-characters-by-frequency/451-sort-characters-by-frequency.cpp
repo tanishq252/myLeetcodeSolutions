@@ -11,7 +11,6 @@ public:
             return a.first>b.first;
         });
         for(auto i:v){
-            cout<<i.first<<" "<<i.second<<"\n";
             for(int j=0;j<i.first;j++){
                 ans+=i.second;
             }
