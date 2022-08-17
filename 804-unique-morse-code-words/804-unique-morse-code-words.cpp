@@ -1,16 +1,15 @@
 class Solution {
 public:
     int uniqueMorseRepresentations(vector<string>& words) {
+        set<string> st;
         vector<string> v = {".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
-        set<string> s;
-        vector<string> v1;
         for(auto i:words){
-            string pattern ="";
-            for(int j=0;j<i.length();j++){
-                pattern+= v[i[j]-97];
+            string s = "";
+            for(auto j:i){
+                s+= v[j-'a'];
             }
-            s.insert(pattern);
+            st.insert(s);
         }
-        return s.size();
+        return st.size();
     }
 };
