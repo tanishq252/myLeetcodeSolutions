@@ -6,11 +6,7 @@ public:
         int sum = accumulate(v.begin(), v.begin()+k, 0);
         if(sum >= ans) c++;
         if(k == n){
-            if(sum == accumulate(v.begin(), v.end(), 0)){
-                return 1;
-            }else{
-                return 0;
-            }
+            return (sum == accumulate(v.begin(), v.end(), 0)) ? 1:0;
         }
 
         for(int i=k;i<n;i++){
