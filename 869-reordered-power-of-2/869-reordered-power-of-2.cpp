@@ -6,7 +6,6 @@ public:
         vector<vector<int>> freq;
         while(x<=pow(2, 29)){
             x*=2;
-            // if(x>n) break;
             vector<int> v(10, 0);
             for(auto i:to_string(x)){
                 v[i-'0']++;
