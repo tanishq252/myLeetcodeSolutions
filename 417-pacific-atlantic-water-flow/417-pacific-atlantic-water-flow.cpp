@@ -1,43 +1,43 @@
 class Solution {
 public:
-     void dfs(vector<vector<int>>& matrix, vector<vector<bool>>& visited, int i, int j) {
-        int m = matrix.size();
-        int n = matrix[0].size();
+//      void dfs(vector<vector<int>>& matrix, vector<vector<bool>>& visited, int i, int j) {
+//         int m = matrix.size();
+//         int n = matrix[0].size();
 
-        visited[i][j] = true;
-        //up
-        if (i-1 >= 0 && visited[i-1][j] != true && matrix[i-1][j]>=matrix[i][j])
-            dfs(matrix, visited, i-1, j);
-        //down
-        if (i+1 < m && visited[i+1][j] != true && matrix[i+1][j]>=matrix[i][j])
-            dfs(matrix, visited, i+1, j);
-        //left
-        if (j-1 >= 0 && visited[i][j-1] != true && matrix[i][j-1]>=matrix[i][j])
-            dfs(matrix, visited, i, j-1);
-        //right
-        if (j+1 <n && visited[i][j+1] != true && matrix[i][j+1]>=matrix[i][j])
-            dfs(matrix, visited, i, j+1);
-
-    }
-    
-//     void dfs(vector<vector<int>>& heights, vector<vector<bool>>& visited, int i, int j){
-//         int m = heights.size(), n = heights[0].size();
-        
 //         visited[i][j] = true;
-        
-//         if(i>0 and visited[i-1][j]!=true and (heights[i-1][j] >= heights[i][j])){
-//             dfs(heights, visited, i-1, j);
-//         }
-//         if(i<m-1 and visited[i+1][j]!=true and (heights[i+1][j] >= heights[i][j])){
-//             dfs(heights, visited, i+1, j);
-//         }
-//         if(j>0 and visited[i][j-1]!=true and (heights[i][j-1] >= heights[i][j])){
-//             dfs(heights, visited, i, j-1);
-//         }
-//         if(j<n-1 and visited[i-1][j]!=true and (heights[i][j+1] >= heights[i][j])){
-//             dfs(heights, visited, i, j+1);
-//         }
+//         //up
+//         if (i-1 >= 0 && visited[i-1][j] != true && matrix[i-1][j]>=matrix[i][j])
+//             dfs(matrix, visited, i-1, j);
+//         //down
+//         if (i+1 < m && visited[i+1][j] != true && matrix[i+1][j]>=matrix[i][j])
+//             dfs(matrix, visited, i+1, j);
+//         //left
+//         if (j-1 >= 0 && visited[i][j-1] != true && matrix[i][j-1]>=matrix[i][j])
+//             dfs(matrix, visited, i, j-1);
+//         //right
+//         if (j+1 <n && visited[i][j+1] != true && matrix[i][j+1]>=matrix[i][j])
+//             dfs(matrix, visited, i, j+1);
+
 //     }
+    
+    void dfs(vector<vector<int>>& heights, vector<vector<bool>>& visited, int i, int j){
+        int m = heights.size(), n = heights[0].size();
+        
+        visited[i][j] = true;
+        
+        if(i>0 and visited[i-1][j]!=true and (heights[i-1][j] >= heights[i][j])){
+            dfs(heights, visited, i-1, j);
+        }
+        if(i<m-1 and visited[i+1][j]!=true and (heights[i+1][j] >= heights[i][j])){
+            dfs(heights, visited, i+1, j);
+        }
+        if(j>0 and visited[i][j-1]!=true and (heights[i][j-1] >= heights[i][j])){
+            dfs(heights, visited, i, j-1);
+        }
+        if(j<n-1 and visited[i][j+1]!=true and (heights[i][j+1] >= heights[i][j])){
+            dfs(heights, visited, i, j+1);
+        }
+    }
     
     vector<vector<int>> pacificAtlantic(vector<vector<int>>& heights) {
         vector<vector<int>> ans;
