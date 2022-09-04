@@ -12,8 +12,11 @@
 class FindElements {
 public:
     vector<int> v;
+    
+    // simple preorder traversal to keep on updating the values as per the given problem
     void preOrder(TreeNode *root, int val){
         if(root==NULL) return;
+        // appending all the values so that later we can check whether the given value is present in these values or not
         v.push_back(val);
         preOrder(root->left, 2*val+1);        
         preOrder(root->right, 2*val+2);
