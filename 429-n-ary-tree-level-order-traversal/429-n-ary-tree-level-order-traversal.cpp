@@ -20,18 +20,19 @@ public:
 
 class Solution {
 public:
-    void levelorder(Node *root, vector<vector<int>> &ans, int depth){
-        if(root==NULL) return;
-        if(ans.size() == depth) ans.push_back({});
-        ans[depth].push_back(root->val);
-        vector<Node *> children = root->children;
-        for(int i=0;i<children.size();i++){
-            levelorder(root->children[i], ans, depth+1);
+    vector<vector<int>> v;
+    void level(Node *root, int depth){
+        if(root == NULL) return;
+        if(v.size() == depth){
+            v.push_back({});
+        }
+        v[depth].push_back(root->val);
+        for(auto &i:root->children){
+            level(i, depth+1);
         }
     }
     vector<vector<int>> levelOrder(Node* root) {
-        vector<vector<int>> ans;
-        levelorder(root, ans, 0);
-        return ans;
+        level(root, 0);
+        return v;
     }
 };
