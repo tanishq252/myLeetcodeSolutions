@@ -15,7 +15,6 @@ public:
         if(root==NULL){
             return NULL;
         }
-        
         root->left = rec(root->left);        
         root->right = rec(root->right);
         if(root->val == 0 and root->left == NULL and root->right==NULL){
