@@ -1,17 +1,23 @@
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
-        int mn = prices[0];
+        int buy, sell, i=0,n = prices.size()-1;
         int mxProfit = 0;
-        for(int i=1;i<prices.size();i++){
-            if(prices[i]-mn >= 0){
-                mxProfit+=(prices[i]-mn);
-                mn = prices[i];
-            }else{
-                mn = min(mn, prices[i]);
+        while(i<n){
+            // finding the local minima
+            while(i<n and prices[i]>=prices[i+1]){
+                i++;
             }
-            cout<<mn<<" "<<mxProfit<<"\n";
+            buy = prices[i];
+            
+            // finding the local maxima
+            while(i<n and prices[i]<prices[i+1]){
+                i++;
+            }
+            sell = prices[i];
+            mxProfit+=(sell - buy);
         }
+        
         return mxProfit;
     }
 };
