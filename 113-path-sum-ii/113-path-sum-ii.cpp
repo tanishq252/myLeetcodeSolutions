@@ -11,38 +11,34 @@
  */
 class Solution {
 public:
-    
-    void recursionTraverse(TreeNode *root, int path[], int pathLen, vector<vector<int>> &ans, int targetSum){
-        if(root==NULL){
-            return;
-        }
-        path[pathLen] = root->val;
-        pathLen++;
-        
-        if(root->left==NULL && root->right==NULL){
-            vector<int> v;
+    vector<vector<int>> ans;
+    int target;
+    void recur(TreeNode *root, int i, int path[]){
+        if(root == NULL) return;
+        path[i] = root->val;
+        i++;
+        if(root->left == NULL and root->right == NULL){
             int s=0;
-            for(int i=0;i<pathLen;i++){
-                s+=path[i];
+            for(int j=0;j<i;j++){
+                s+=path[j];
             }
-            if(s==targetSum){
-                for(int i=0;i<pathLen;i++){
-                v.push_back(path[i]);
+            if(s == target){
+               vector<int> v;
+               for(int j=0;j<i;j++){
+                    v.push_back(path[j]);
                 }
                 ans.push_back(v);
             }
-        }
-        else{
-            recursionTraverse(root->left, path, pathLen, ans, targetSum);
-            recursionTraverse(root->right, path, pathLen, ans, targetSum);
-
+        }else{
+            recur(root->left, i, path);
+            recur(root->right, i, path);
         }
     }
-    
     vector<vector<int>> pathSum(TreeNode* root, int targetSum) {
-        vector<vector<int>> ans;
+        target = targetSum;
         int path[5000];
-        recursionTraverse(root, path, 0, ans, targetSum);
+        recur(root, 0, path);
         return ans;
+        
     }
 };
