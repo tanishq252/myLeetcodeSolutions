@@ -11,53 +11,29 @@
 class Solution {
 public:
     ListNode* removeNthFromEnd(ListNode* head, int n) {
-        ListNode *temp = head;
-        ListNode *newList = new ListNode();
-        ListNode *ptr = newList;
         int len = 0;
-        vector<int> v;
+        ListNode *temp = head;
         while(temp){
-            len++;
-            v.push_back(temp->val);
-            temp = temp->next;
+            temp = temp->next;len++;
         }
         temp = head;
-        if(len == n){return head->next;}
-        len-=1;
-        if(len == 0){return NULL;}
-        // if(len == )
-        while(temp){
-            cout<<len;
-            if(len == n){
-                temp->next = temp->next->next;
-                break;
-            }
-            temp = temp->next;
-            len--;
+        if(n == len){
+            return temp->next;
         }
-        
+        int k = len - n;
+        len = 1;
+        while(temp){
+                        cout<<temp->val<<" "<<len<<"\n";
+
+            if(len == k){
+                // ListNode *t = temp->next;
+                temp->next = temp->next->next;len++;
+                // delete t;
+            }else{
+                temp = temp->next;
+                len++;
+            }
+        }
         return head;
-        
-        
-//         passed all test cases
-        // ListNode *temp = head;
-        // ListNode *newList = new ListNode();
-        // ListNode *ptr = newList;
-        // int len = 0;
-        // vector<int> v;
-        // while(temp){
-        //     len++;
-        //     v.push_back(temp->val);
-        //     temp = temp->next;
-        // }
-        // cout<<len;
-        // temp = head;
-        // for(int i=0;i<len;i++){
-        //     if(i!=(len - n)){ListNode *newNode = new ListNode(temp->val);
-        //     ptr->next = newNode;
-        //     ptr = ptr->next;}
-        //     temp = temp->next;
-        // }
-        // return newList->next;
     }
 };
