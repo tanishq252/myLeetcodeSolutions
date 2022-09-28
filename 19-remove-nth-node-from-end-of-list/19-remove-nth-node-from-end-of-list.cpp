@@ -26,9 +26,9 @@ public:
                         cout<<temp->val<<" "<<len<<"\n";
 
             if(len == k){
-                // ListNode *t = temp->next;
+                ListNode *t = temp->next;
                 temp->next = temp->next->next;len++;
-                // delete t;
+                delete t;
             }else{
                 temp = temp->next;
                 len++;
