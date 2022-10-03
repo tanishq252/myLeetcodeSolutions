@@ -12,7 +12,6 @@ public:
                 int s = accumulate(neededTime.begin()+x, neededTime.begin()+y+1, 0);
                 int m = *max_element(neededTime.begin()+x, neededTime.begin()+y+1);
                 ans+=(s-m);
-                cout<<x<<" "<<y<<" "<<s<<" "<<m<<"\n";
             }
         }
         return ans;
