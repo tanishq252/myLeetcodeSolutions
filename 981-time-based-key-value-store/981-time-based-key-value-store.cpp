@@ -1,25 +1,23 @@
 class TimeMap {
 public:
     map<string, map<int, string>> tmp;
-    map<string, vector<int>> tmp2;
     TimeMap() {
         
     }
     
     void set(string key, string value, int timestamp) {
         tmp[key][timestamp] = value;
-        tmp2[key].push_back(timestamp);
     }
     
     string get(string key, int timestamp) {
         if(tmp.find(key) == tmp.end()){
-                    return "";
+            return "";
         }
          for(auto j=tmp[key].rbegin();j!=tmp[key].rend();j++){
-                     if(j->first<=timestamp){
-                         return j->second;
-                     }
-                 }
+             if(j->first<=timestamp){
+                 return j->second;
+             }
+         }
         return "";
     }
 };
