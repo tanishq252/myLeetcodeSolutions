@@ -1,32 +1,31 @@
 class Solution {
 public:
     int threeSumClosest(vector<int>& nums, int target) {
-        vector<pair<int, int>> targets;
+        int closest=0, n=nums.size(), mn=INT_MAX, minVal=INT_MAX;
+        if(n==3) return nums[0]+nums[1]+nums[2];
         sort(nums.begin(), nums.end());
-        for(int i=0;i<nums.size()-2;i++){
-            int l = i+1;
-            int r = nums.size()-1;
-            while(l<r){
-                int sum = nums[i]+nums[l]+nums[r];
-                if(targets.size()==0){
-                    targets.push_back({sum, abs(target-sum)});
-                }else{
-                    if(sum == target){
-                        return target;
-                    }else if(sum>target){
-                        if(targets[targets.size()-1].second > abs(sum-target)){
-                            targets.push_back({sum, abs(target-sum)});
-                        }
-                        r--;
-                    }else if(sum<target){
-                        if(targets[targets.size()-1].second > abs(sum-target)){
-                            targets.push_back({sum, abs(target-sum)});
-                        }
-                        l++;
+        for(int i=0;i<n-2;i++){
+            int l=i+1, r=n-1, s=nums[i];
+            while(r>l){
+                int sum = s+nums[r]+nums[l];
+                if(sum==target) return sum;
+                if(sum<target){
+                    if(minVal>abs(target-sum)){
+                        minVal = abs(target-sum);
+                        mn = sum;
                     }
+                    l++;
+                }
+                if(sum>target){
+                    if(minVal>abs(target-sum)){
+                        minVal = abs(target-sum);
+                        mn = sum;
+                    }
+                    r--;
                 }
             }
         }
-        return targets[targets.size()-1].first;
+        cout<<mn;
+        return mn;
     }
 };
