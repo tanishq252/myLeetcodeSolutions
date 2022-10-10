@@ -14,20 +14,17 @@ public:
                 return palindrome;
             }
         }
-        bool changed = false;
-        // while(!changed){
-            int i=0;
-            while(i<n/2){
-                if(palindrome[i]=='a') i++;
-                else{
-                    palindrome[i]='a';
-                    return palindrome;
-                }
+        int i=0;
+        while(i<n/2){
+            if(palindrome[i]=='a') i++;
+            else{
+                palindrome[i]='a';
+                return palindrome;
             }
+        }
         if(i==n/2){
             palindrome[n-1]='b';
         }
-        // }
         return palindrome;
     }
 };
