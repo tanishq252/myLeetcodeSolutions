@@ -3,7 +3,6 @@ public:
     int mxSeq = INT_MIN;        
     vector<int> v;
 
-
     void backtrack(vector<string> &arr, int i, string &s){
         v = vector<int>(26, 0);
         for(int j=0;j<s.length();j++){
@@ -13,8 +12,7 @@ public:
             v[s[j]-'a']++;
         }
         mxSeq = mxSeq > s.length() ?mxSeq : s.length();
-                if(i==arr.size()) return;
-
+        if(i==arr.size()) return;
         string ss = s+arr[i];
         backtrack(arr, i+1, ss);
         backtrack(arr, i+1, s);
@@ -30,7 +28,6 @@ public:
         v = vector<int>(26, 0);
         string s="";
         backtrack(arr, 0, s);
-        cout<<mxSeq;
         return mxSeq;
     }
 };
