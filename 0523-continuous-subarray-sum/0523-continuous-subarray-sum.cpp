@@ -3,7 +3,7 @@ public:
     bool checkSubarraySum(vector<int>& nums, int k) {
         int n = nums.size();
         if(n==1) return false;
-                if(k==1) return true;
+        if(k==1) return true;
         for(int i=1;i<n;i++){
             nums[i]+=nums[i-1];
         }
@@ -29,16 +29,10 @@ public:
                         return false;
                     }
                     else{
-                        // if(mp[nums[i]%k] == 1){
-                        //     return true;
-                        // }else{
-                        //     mp[nums[i]%k]++;
-                        // }
                         i++;
                     }
                     i++;
                 }else{
-                    cout<<i<<"\n";
                     if(mp[nums[i]%k] == 1){
                         return true;
                     }else{
