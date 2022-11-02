@@ -21,12 +21,11 @@ public:
                 return;
             }
             if(visited[g[i][j]] == false){
-                cout<<bank[g[i][j]]<<" ";
-                bfs(g[i][j], start, end, g, visited, count, bank);visited[g[i][j]]=false;
+                bfs(g[i][j], start, end, g, visited, count, bank);
+                visited[g[i][j]]=false;
             } 
         }
-        // visited[i]=false;
-        // count--;
+
     }
     
     int minMutation(string start, string end, vector<string>& bank) {
