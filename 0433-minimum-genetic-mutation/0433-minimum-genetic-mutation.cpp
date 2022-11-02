@@ -25,9 +25,8 @@ public:
                 bfs(g[i][j], start, end, g, visited, count, bank);visited[g[i][j]]=false;
             } 
         }
-        visited[i]=false;
-        count--;
-        cout<<"\n";
+        // visited[i]=false;
+        // count--;
     }
     
     int minMutation(string start, string end, vector<string>& bank) {
@@ -49,7 +48,6 @@ public:
 
         for(int i=0;i<bank.size();i++){
             if(changes(start, bank[i]) == 1){
-                cout<<bank[i]<<" ";
                 if(end == bank[i]) return 1;
                 else {
                     bfs(i, start, end, g, visited, 1, bank);
@@ -57,7 +55,6 @@ public:
                 }
             }
         }
-        cout<<"\nANS: "<<ans;
         return ans==INT_MAX ? -1:ans;
     }
 };
