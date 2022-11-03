@@ -27,7 +27,6 @@ public:
             }
         }
         int flag=0;
-        cout<<dub<<"\n";
         for(auto &i:mp2){
             if(i.second!=mx and i.second%2==1){
                 dub+=(i.second-1);
@@ -42,13 +41,11 @@ public:
             }
             
         }
-        cout<<dub<<"\n";
         for(auto &i:mp1){
             s[0]=i.first[1];s[1]=i.first[0];
             dub+=(min(mp1[i.first], mp1[s]));
         }
         mx = mx==INT_MIN ? 0:mx;
-        cout<<dub<<" "<<mx;
         return 2*(dub);
     }
 };
