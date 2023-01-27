@@ -22,7 +22,7 @@ public:
         recur(i+1, temp, vec, s);
     }
     vector<string> findAllConcatenatedWordsInADict(vector<string>& words) {
-        for(auto &i:words) st.insert(i);
+        st = set<string> (words.begin(), words.end());
         for(int i=0;i<words.size();i++){
             string temp="";
             vector<string> vec;
